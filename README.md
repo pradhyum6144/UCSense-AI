@@ -1,4 +1,4 @@
-# 🔬 UCSense-AI
+# UCSense-AI
 
 > **AI-Powered Graph-to-Data Pipeline for Geotechnical UCS Test Digitization**
 
@@ -13,7 +13,7 @@ UCSense-AI transforms static geotechnical UCS (Unconfined Compressive Strength) 
 
 ---
 
-## 🎯 The Problem
+##  The Problem
 
 Geotechnical engineers frequently work with legacy UCS test results stored as static graph images in PDF reports or scanned documents. Extracting numerical data from these graphs for computational analysis traditionally requires:
 - Manual digitization (tedious, error-prone)
@@ -24,22 +24,22 @@ Geotechnical engineers frequently work with legacy UCS test results stored as st
 
 ---
 
-## ✨ Features
+##  Features
 
 | Feature | Description |
 |---------|-------------|
-| 🖼️ **Smart Image Processing** | Automatic skew correction, perspective fixing, and noise removal |
-| 🔤 **Intelligent OCR** | Tesseract-based axis detection with regex validation and error correction |
-| 📈 **Hybrid Extraction** | OpenCV contour tracing for clean images, U-Net segmentation for noisy scans |
-| 🎯 **Peak Detection** | Automatic UCS, failure strain, and modulus calculation using derivative analysis |
-| 📊 **Confidence Scoring** | Multi-factor quality assessment with A-F grading |
-| 📥 **CSV Export** | Download digitized data for further analysis |
-| 🌐 **Modern Web UI** | Drag-and-drop upload with real-time visualization |
-| ☁️ **Serverless Ready** | AWS Lambda deployment with S3 integration |
+|  **Smart Image Processing** | Automatic skew correction, perspective fixing, and noise removal |
+|  **Intelligent OCR** | Tesseract-based axis detection with regex validation and error correction |
+|  **Hybrid Extraction** | OpenCV contour tracing for clean images, U-Net segmentation for noisy scans |
+|  **Peak Detection** | Automatic UCS, failure strain, and modulus calculation using derivative analysis |
+|  **Confidence Scoring** | Multi-factor quality assessment with A-F grading |
+|  **CSV Export** | Download digitized data for further analysis |
+|  **Modern Web UI** | Drag-and-drop upload with real-time visualization |
+|  **Serverless Ready** | AWS Lambda deployment with S3 integration |
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
@@ -69,7 +69,7 @@ Geotechnical engineers frequently work with legacy UCS test results stored as st
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -113,7 +113,7 @@ npm run dev
 
 ---
 
-## 📡 API Endpoints
+##  API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -147,7 +147,7 @@ curl -X POST "http://localhost:8000/api/v1/extract" \
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 UCSense-AI/
@@ -176,7 +176,7 @@ UCSense-AI/
 
 ---
 
-## 🧠 How It Works
+##  How It Works
 
 ### 1. Image Rectification
 - Detects and corrects skew using Hough Transform
@@ -205,7 +205,7 @@ UCSense-AI/
 
 ---
 
-## 🎨 Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -220,7 +220,7 @@ UCSense-AI/
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 Create a `.env` file in the backend directory:
 
@@ -242,7 +242,7 @@ SUPABASE_KEY=your_key
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 cd backend
@@ -252,7 +252,7 @@ pytest tests/ -v
 
 ---
 
-## 🐳 Docker
+##  Docker
 
 ```bash
 # Start all services
@@ -265,7 +265,7 @@ docker-compose up --build
 
 ---
 
-## ☁️ AWS Deployment
+##  AWS Deployment
 
 ```bash
 cd infra
@@ -283,7 +283,7 @@ serverless deploy --stage prod
 
 ---
 
-## 📊 Accuracy Targets
+##  Accuracy Targets
 
 | Metric | Target | Current |
 |--------|--------|---------|
@@ -295,7 +295,7 @@ serverless deploy --stage prod
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -305,13 +305,13 @@ serverless deploy --stage prod
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - OpenCV for computer vision capabilities
 - Tesseract OCR for text recognition
