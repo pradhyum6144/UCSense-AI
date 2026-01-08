@@ -1,0 +1,51 @@
+{
+  "data_points": [
+    {
+      "strain": 1.0154,
+      "stress": 4978.72
+    },
+    {
+      "strain": 1.0431,
+      "stress": 4882.98
+    },
+    {
+      "strain": 1.1169,
+      "stress": 4840.43
+    },
+    {
+      "strain": 1.1723,
+      "stress": 4776.6
+    },
+    {
+      "strain": 1.2092,
+      "stress": 4691.49
+    },
+    {
+      "strain": 1.2831,
+      "stress": 4648.94
+    },
+    {
+      "strain": 1.3569,
+      "stress": 4595.74
+    },
+    {
+      "strain": 1.3846,
+      "stress": 4500.0
+    },
+    {
+      "strain": 1.4123,
+      "stress": 4436.17
+    },
+    {
+      "strain": 1.4954,
+      "stress": 4404.26
+    }
+  ],
+  "total_points": 58,
+  "features": {
+    "peak_stress_kN_m2": 3948.6283428816646,
+    "failure_strain_pct": 2.1200391959798996,
+    "initial_modulus": -1508.4075100806242,
+    "confidence": 0.6642311142060298
+  }
+}

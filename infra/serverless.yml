@@ -1,0 +1,117 @@
+service: ucsense-ai
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'dev'}
+  memorySize: 2048
+  timeout: 300
+  
+  environment:
+    STAGE: ${self:provider.stage}
+    S3_BUCKET_NAME: ${self:custom.bucketName}
+    SUPABASE_URL: ${env:SUPABASE_URL, ''}
+    SUPABASE_KEY: ${env:SUPABASE_KEY, ''}
+    ENABLE_UNET_FALLBACK: 'true'
+    ENABLE_CONFIDENCE_SCORING: 'true'
+  
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:DeleteObject
+          Resource:
+            - arn:aws:s3:::${self:custom.bucketName}/*
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: '*'
+
+custom:
+  bucketName: ucsense-uploads-${self:provider.stage}
+
+functions:
+  api:
+    image:
+      name: ucsense-api
+      uri: ${env:ECR_IMAGE_URI}
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
+      - http:
+          path: /
+          method: ANY
+          cors: true
+
+  processImage:
+    image:
+      name: ucsense-api
+      uri: ${env:ECR_IMAGE_URI}
+    events:
+      - s3:
+          bucket: ${self:custom.bucketName}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+            - suffix: .png
+      - s3:
+          bucket: ${self:custom.bucketName}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+            - suffix: .jpg
+      - s3:
+          bucket: ${self:custom.bucketName}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+            - suffix: .jpeg
+
+resources:
+  Resources:
+    UploadBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
+        CorsConfiguration:
+          CorsRules:
+            - AllowedOrigins:
+                - '*'
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+              AllowedHeaders:
+                - '*'
+              MaxAge: 3000
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  patterns:
+    - '!.git/**'
+    - '!.gitignore'
+    - '!node_modules/**'
+    - '!tests/**'
+    - '!.env*'
+    - '!*.md'
